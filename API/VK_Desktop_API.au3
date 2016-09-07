@@ -45,6 +45,7 @@ Func _vAPI_OAuth2($VKAPI_login, $VKAPI_pass, $VKAPI_ID = Default, $VKAPI_SCOPE =
  If (($VKAPI_ID = Default) or ($VKAPI_ID = '')) Then $VKAPI_ID = 2987875
  If (($VKAPI_SCOPE = Default) or ($VKAPI_SCOPE = '')) Then $VKAPI_SCOPE = _vAPI_SCOPE() 	;~ Default = 136232095
  If ($VKAPI_SCOPE = 'offline') Then $VKAPI_SCOPE = _vAPI_SCOPE() + _vAPI_SCOPE('offline')	;~ Default + offline = 136297631
+ If (IsArray($VKAPI_SCOPE)) Then $VKAPI_SCOPE = _vAPI_SCOPE($VKAPI_SCOPE) 					;~ IsArray
 
  $oAuth2 = 'https://oauth.vk.com/authorize?' & 'client_id=' & $VKAPI_ID & '&redirect_uri=https://oauth.vk.com/blank.html' & '&display=mobile' & '&scope=' & $VKAPI_SCOPE & '&response_type=token' & '&v=' & $API_VER
  $sTYPE = _vAPI_SENDRequest($oAuth2) 						;~ 	STEP # - oauth.vk.com		| Opening authorization dialogue
