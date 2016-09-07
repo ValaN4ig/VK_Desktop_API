@@ -71,6 +71,7 @@ Func _vAPI_OAuth2($VKAPI_login, $VKAPI_pass, $VKAPI_ID = Default, $VKAPI_SCOPE =
 	  Select
 		 Case StringInStr($sTYPE[1], 'access_token')		;~ STEP # - access_token		| Getting access_token
 			$UToken = _vAPI_TOKENParse($sTYPE[1])
+			_vAPI_GETMethod('stats.trackVisitor')
 			Return $UToken
 		 Case Else											;~ STEP # - location
 			$sTYPE = _vAPI_SENDRequest($sTYPE[1])
